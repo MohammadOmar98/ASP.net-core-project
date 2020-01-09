@@ -18,7 +18,7 @@ namespace DatingApp.API.Data
       
         public DbSet<Value> Values { get; set; }       //Creating property of type Dbset and pass the entity we created "Value"
                                                       //the entityframework  will create a table in my data base called Values 
-
+        public DbSet <User> Users { get; set; }
     }   
 }
 
