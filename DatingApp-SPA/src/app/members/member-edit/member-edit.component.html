@@ -10,7 +10,7 @@
     </div>
     <div class="col-sm-4">
       <div class="card">
-      <img class="card-img-top img-thumbnail " src="{{user?.photoUrl}}" alt="user.username">
+      <img class="card-img-top img-thumbnail " src="{{photoUrl}}" alt="user.username">
       <div class="card-body">
         <div>
         <strong>Location</strong>
@@ -69,15 +69,11 @@
         
         </tab>
         <tab heading="Edit Gallery">
-          <h4>edit your pics!</h4>
-         
+         <app-photo-editor [photos]="user.photos" 
+         (getMemberPhotoChange)=(updateMainPhoto($event))></app-photo-editor>
         </tab>
-
-        
-
         </tabset>
       </div>
-
     </div>
   </div>
 </div>

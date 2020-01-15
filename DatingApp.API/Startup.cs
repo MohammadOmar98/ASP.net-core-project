@@ -46,6 +46,8 @@ namespace DatingApp.API
              //this service wiil allow the client (Angular project) to access the data of the API project
             services.AddCors();
 
+            services.Configure<CloudinarySettings>(Configuration.GetSection("CloudinarySettings"));
+
             services.AddAutoMapper();
 
             services.AddTransient<Seed>();
