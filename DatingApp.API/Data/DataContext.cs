@@ -17,12 +17,15 @@ namespace DatingApp.API.Data
 
       
         public DbSet<Value> Values { get; set; }       //Creating property of type Dbset and pass the entity we created "Value"
-                                                      //the entityframework  will create a table in my data base called Values 
+                                                      //the entityframework  will create a table in my database called Values 
         public DbSet <User> Users { get; set; }
         
         public DbSet <Photo> Photos { get; set; }
 
         public DbSet <Like> Likes { get; set; }
+
+        public DbSet <Message> Messages { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder builder) 
         {
@@ -41,6 +44,19 @@ namespace DatingApp.API.Data
              .WithMany(u =>u.Likees)
              .HasForeignKey(u => u.LikerId)
              .OnDelete(DeleteBehavior.Restrict);
+
+
+             builder.Entity<Message>()
+             .HasOne(u => u.Sender) 
+             .WithMany(u =>u.MessagesSent)
+             .OnDelete(DeleteBehavior.Restrict);
+
+
+             builder.Entity<Message>()
+             .HasOne(u => u.Recipient)
+             .WithMany(u =>u.MessagesReceived)
+             .OnDelete(DeleteBehavior.Restrict);
+
              
 
         }
